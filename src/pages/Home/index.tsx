@@ -1,9 +1,12 @@
+import Header from "../../components/Header";
 import useGetEmployees from "./hooks/useGetEmployees";
+
+// Styles
+import "./index.scss";
 
 function Home() {
   const { isLoading, employees, isError } = useGetEmployees();
 
-  console.log("employees", employees);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -12,7 +15,19 @@ function Home() {
     return <div>Error</div>;
   }
 
-  return <div>index</div>;
+  return (
+    <>
+      <Header />
+      <main className="home">
+        <div className="home-container">
+          <section>
+            <h2>Funcionários</h2>
+            <div>SearchBar</div>
+          </section>
+        </div>
+      </main>
+    </>
+  );
 }
 
 export default Home;
