@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import SearchBar from "../../components/SearchBar";
 import useGetEmployees from "./hooks/useGetEmployees";
 
 // Styles
@@ -22,7 +23,7 @@ function Home() {
         <div className="home-container">
           <section>
             <h2>Funcionários</h2>
-            <div>SearchBar</div>
+            <SearchBar size="medium" />
           </section>
         </div>
       </main>
