@@ -3,11 +3,18 @@ import { Employee } from "../../../../types/Employee";
 
 // Components
 import EmployeeAccordion from "../../../EmployeeAccordion";
+import SkeletonMobile from "../SkeletonMobile";
 
 // Styles
 import "./index.scss";
 
-function MobileTable({ employees }: { employees: Employee[] }) {
+function MobileTable({
+  employees,
+  isLoading,
+}: {
+  employees: Employee[];
+  isLoading?: boolean;
+}) {
   return (
     <div className="mobile-table">
       <header>
@@ -15,11 +22,15 @@ function MobileTable({ employees }: { employees: Employee[] }) {
         <p>NOME</p>
         <div className="mobile-table__action-indicator" />
       </header>
-      <main>
-        {employees.map((employee) => (
-          <EmployeeAccordion key={employee.id} employee={employee} />
-        ))}
-      </main>
+      {isLoading ? (
+        <SkeletonMobile />
+      ) : (
+        <main>
+          {employees.map((employee) => (
+            <EmployeeAccordion key={employee.id} employee={employee} />
+          ))}
+        </main>
+      )}
     </div>
   );
 }

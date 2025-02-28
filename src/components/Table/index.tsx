@@ -23,7 +23,7 @@ function Table({
   const isMobile = useMedia("(max-width: 960px)");
 
   if (isMobile) {
-    return <MobileTable employees={employees} />;
+    return <MobileTable employees={employees} isLoading={isLoading} />;
   }
 
   return (
