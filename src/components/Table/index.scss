@@ -1,0 +1,72 @@
+@use "../../styles/variables.scss";
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0px 1px;
+  border-collapse: separate;
+
+  & td,
+  & th {
+    text-align: left;
+    height: 49px;
+    width: auto;
+    vertical-align: middle;
+  }
+
+  & td {
+    height: 49px;
+  }
+
+  & th {
+    height: 47px;
+    text-transform: uppercase;
+  }
+
+  & tr {
+    & > th:first-child,
+    & > td:first-child {
+      padding-left: 32px;
+    }
+
+    & > th:last-child,
+    & > td:last-child {
+      padding-right: 32px;
+    }
+  }
+}
+
+.employee-image {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-block;
+  max-height: 100%;
+  vertical-align: middle;
+}
+
+.table-header {
+  background-color: variables.$main-default;
+
+  & > th:first-child {
+    border-top-left-radius: 8px;
+  }
+
+  & > th:last-child {
+    border-top-right-radius: 8px;
+  }
+
+  & > th {
+    color: variables.$white;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.54px;
+  }
+}
+
+.table-row {
+  background-color: variables.$white;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  // border-bottom: 1px solid variables.$bg-main;
+}

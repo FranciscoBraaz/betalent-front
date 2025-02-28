@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
+import Table from "../../components/Table";
 import useGetEmployees from "./hooks/useGetEmployees";
 
 // Styles
@@ -25,6 +26,7 @@ function Home() {
             <h2>Funcionários</h2>
             <SearchBar size="medium" />
           </section>
+          <Table employees={employees} />
         </div>
       </main>
     </>

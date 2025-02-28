@@ -51,7 +51,6 @@ function SearchBar({
         style={search ? { paddingRight: 32 } : {}}
       />
       <SearchGlass />
-      {/* <X className={returnCloseIconClassName()} onClick={handleClickClear} /> */}
     </div>
   );
 }
