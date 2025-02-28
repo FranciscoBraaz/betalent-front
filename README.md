@@ -15,7 +15,7 @@ Aplicação desenvolvida com o objetivo de praticar os conhecimentos em React e 
 
  #### Baixando repositório para sua máquina
     # Clone o repositório com:
-    git clone https://github.com/FranciscoBraaz/betalent-front
+    git clone https://github.com/FranciscoBraaz/betalent-front.git
     
     # Navegue para a pasta raíz com:
     cd betalent-front
