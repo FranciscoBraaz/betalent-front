@@ -16,6 +16,9 @@
 
   & td {
     height: 49px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   & th {

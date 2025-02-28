@@ -1,0 +1,36 @@
+@use "../../../../styles/variables.scss";
+
+.employee-details-content {
+  background-color: variables.$white !important;
+  padding: 32px 16px;
+
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & > li {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px dashed variables.$text-tertiary;
+
+      & > strong,
+      & > span {
+        font-size: 16px;
+        line-height: 19.54px;
+        color: variables.$text-primary;
+      }
+
+      & > strong {
+        font-weight: 500;
+      }
+
+      & > span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "../../../../styles/variables.scss";
+
+.trigger-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+
+  & > img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  & > p {
+    font-size: 16px;
+    line-height: 19.09px;
+  }
+}

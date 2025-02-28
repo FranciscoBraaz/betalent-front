@@ -1,5 +1,7 @@
 // Styles
+import { useMedia } from "../../hooks/useMedia";
 import "./index.scss";
+import MobileTable from "./subComponents/MobileTable";
 
 interface Employee {
   id: number;
@@ -13,6 +15,12 @@ interface Employee {
 const columns = ["image", "name", "job", "admission_date", "phone"];
 
 function Table({ employees }: { employees: Employee[] }) {
+  const isMobile = useMedia("(max-width: 960px)");
+
+  if (isMobile) {
+    return <MobileTable employees={employees} />;
+  }
+
   return (
     <table className="table">
       <thead>
@@ -28,7 +36,10 @@ function Table({ employees }: { employees: Employee[] }) {
         {employees.map((employee) => (
           <tr key={employee.id} className="table-row">
             {columns.map((column) => (
-              <td key={column}>
+              <td
+                key={column}
+                title={String(employee[column as keyof Employee])}
+              >
                 {column === "image" ? (
                   <img
                     className="employee-image"
