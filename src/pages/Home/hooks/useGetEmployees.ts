@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 interface Employee {
@@ -10,19 +11,30 @@ interface Employee {
 }
 
 function useGetEmployees() {
+  const [searchedValue, setSearchedValue] = useState("");
+
   const {
     data: employees,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["employees"],
+    queryKey: ["employees", searchedValue],
     queryFn: fetchEmployees,
   });
 
   async function fetchEmployees() {
     try {
-      const response = await axios.get("http://localhost:3001/employees");
-      const formattedData = response.data.map((employee: Employee) => ({
+      let url = "http://localhost:3001/employees";
+      if (searchedValue) {
+        url = `http://localhost:3001/employees?q=${searchedValue}`;
+      }
+      const { data } = await axios.get(url, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const formattedData = data.map((employee: Employee) => ({
         ...employee,
         admission_date: formatDate(employee.admission_date),
         phone: formatPhone(employee.phone),
@@ -49,10 +61,15 @@ function useGetEmployees() {
       .replace(/(-\d{4})\d+?$/, "$1"); // Impede mais números depois do traço
   }
 
+  function handleSearch(value: string) {
+    setSearchedValue(value);
+  }
+
   return {
     employees,
     isLoading,
     isError,
+    handleSearch,
   };
 }
 

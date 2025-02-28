@@ -1,21 +1,16 @@
+// Custom hooks
+import useGetEmployees from "./hooks/useGetEmployees";
+
+// Components
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 import Table from "../../components/Table";
-import useGetEmployees from "./hooks/useGetEmployees";
 
 // Styles
 import "./index.scss";
 
 function Home() {
-  const { isLoading, employees, isError } = useGetEmployees();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error</div>;
-  }
+  const { isLoading, employees, isError, handleSearch } = useGetEmployees();
 
   return (
     <>
@@ -24,9 +19,10 @@ function Home() {
         <div className="home-container">
           <section>
             <h2>Funcionários</h2>
-            <SearchBar size="medium" />
+            <SearchBar size="medium" onChange={handleSearch} />
           </section>
-          <Table employees={employees} />
+          {isError && <p>Houve um erro ao buscar funcionários</p>}
+          {!isError && <Table employees={employees} isLoading={isLoading} />}
         </div>
       </main>
     </>

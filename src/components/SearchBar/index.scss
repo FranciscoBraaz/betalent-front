@@ -71,3 +71,9 @@
     pointer-events: all;
   }
 }
+
+@media screen and (max-width: variables.$screen-md) {
+  .search-bar {
+    max-width: unset;
+  }
+}

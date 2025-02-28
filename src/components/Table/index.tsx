@@ -1,7 +1,12 @@
-// Styles
+// Custom hooks
 import { useMedia } from "../../hooks/useMedia";
-import "./index.scss";
+
+// Components
+import SkeletonDesktop from "./subComponents/SkeletonDesktop";
 import MobileTable from "./subComponents/MobileTable";
+
+// Styles
+import "./index.scss";
 
 interface Employee {
   id: number;
@@ -14,7 +19,13 @@ interface Employee {
 
 const columns = ["image", "name", "job", "admission_date", "phone"];
 
-function Table({ employees }: { employees: Employee[] }) {
+function Table({
+  employees,
+  isLoading,
+}: {
+  employees: Employee[];
+  isLoading?: boolean;
+}) {
   const isMobile = useMedia("(max-width: 960px)");
 
   if (isMobile) {
@@ -32,30 +43,34 @@ function Table({ employees }: { employees: Employee[] }) {
           <th>Telefone</th>
         </tr>
       </thead>
-      <tbody>
-        {employees.map((employee) => (
-          <tr key={employee.id} className="table-row">
-            {columns.map((column) => (
-              <td
-                key={column}
-                title={String(employee[column as keyof Employee])}
-              >
-                {column === "image" ? (
-                  <img
-                    className="employee-image"
-                    width={34}
-                    height={34}
-                    src={employee.image}
-                    alt={employee.name}
-                  />
-                ) : (
-                  employee[column as keyof Employee]
-                )}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
+      {isLoading ? (
+        <SkeletonDesktop />
+      ) : (
+        <tbody>
+          {employees.map((employee) => (
+            <tr key={employee.id} className="table-row">
+              {columns.map((column) => (
+                <td
+                  key={column}
+                  title={String(employee[column as keyof Employee])}
+                >
+                  {column === "image" ? (
+                    <img
+                      className="employee-image"
+                      width={34}
+                      height={34}
+                      src={employee.image}
+                      alt={employee.name}
+                    />
+                  ) : (
+                    employee[column as keyof Employee]
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      )}
     </table>
   );
 }

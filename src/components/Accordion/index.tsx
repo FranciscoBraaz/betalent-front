@@ -14,10 +14,6 @@ interface AccordionProps {
   defaultValue: string;
   ariaLabelReference: string;
   style?: React.CSSProperties;
-  customTrigger?: (props: {
-    isOpen: boolean;
-    onToggle: () => void;
-  }) => React.ReactNode;
   onExpand?: () => void;
 }
 
@@ -28,7 +24,6 @@ function Accordion({
   defaultValue,
   ariaLabelReference,
   style,
-  customTrigger,
   onExpand = () => {},
 }: AccordionProps) {
   const [itemOpen, setItemOpen] = useState(defaultValue);
@@ -36,22 +31,6 @@ function Accordion({
   async function handleToggleAccordion() {
     setItemOpen((prevValue) => (prevValue === "item-1" ? "" : "item-1"));
     onExpand();
-  }
-
-  if (customTrigger) {
-    return (
-      <Root className="accordion" type="single" value={itemOpen} collapsible>
-        <Item className="accordion__item" value="item-1">
-          {customTrigger({
-            isOpen: itemOpen === "item-1",
-            onToggle: handleToggleAccordion,
-          })}
-          <AccordionContent style={style} ariaLabelReference="employee-details">
-            {content}
-          </AccordionContent>
-        </Item>
-      </Root>
-    );
   }
 
   return (
