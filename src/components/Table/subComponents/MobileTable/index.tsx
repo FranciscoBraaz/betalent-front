@@ -1,16 +1,11 @@
+// Types
+import { Employee } from "../../../../types/Employee";
+
+// Components
 import EmployeeAccordion from "../../../EmployeeAccordion";
 
 // Styles
 import "./index.scss";
-
-interface Employee {
-  id: number;
-  name: string;
-  job: string;
-  admission_date: string;
-  phone: string;
-  image: string;
-}
 
 function MobileTable({ employees }: { employees: Employee[] }) {
   return (

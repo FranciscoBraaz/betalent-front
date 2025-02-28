@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-interface Employee {
-  id: number;
-  name: string;
-  job: string;
-  admission_date: string;
-  phone: string;
-  image: string;
-}
+
+// Types
+import { Employee } from "../../../types/Employee";
 
 function useGetEmployees() {
   const [searchedValue, setSearchedValue] = useState("");

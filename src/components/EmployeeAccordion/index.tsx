@@ -1,14 +1,10 @@
+// Types
+import { Employee } from "../../types/Employee";
+
+// Components
 import Accordion from "../Accordion";
 import Content from "./subComponents/Content";
 import TriggerHeader from "./subComponents/TriggerHeader";
-interface Employee {
-  id: number;
-  name: string;
-  job: string;
-  admission_date: string;
-  phone: string;
-  image: string;
-}
 
 function EmployeeAccordion({ employee }: { employee: Employee }) {
   return (

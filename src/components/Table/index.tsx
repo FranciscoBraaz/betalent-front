@@ -1,3 +1,6 @@
+// Types
+import { Employee } from "../../types/Employee";
+
 // Custom hooks
 import { useMedia } from "../../hooks/useMedia";
 
@@ -7,15 +10,6 @@ import MobileTable from "./subComponents/MobileTable";
 
 // Styles
 import "./index.scss";
-
-interface Employee {
-  id: number;
-  name: string;
-  job: string;
-  admission_date: string;
-  phone: string;
-  image: string;
-}
 
 const columns = ["image", "name", "job", "admission_date", "phone"];
 
