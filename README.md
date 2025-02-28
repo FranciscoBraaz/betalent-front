@@ -28,5 +28,5 @@ Aplicação desenvolvida com o objetivo de praticar os conhecimentos em React e 
     # Executar json-server
     node server.js
     
-    # Iniciar aplicação web:
+    # Em outro terminal, iniciar aplicação web:
     npm run dev
